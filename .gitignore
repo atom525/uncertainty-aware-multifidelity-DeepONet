@@ -1,0 +1,21 @@
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# Large official data and generated training outputs
+data/bte_real/*.npz
+results/bte_real/
+results/bte_mf_ensemble/
+results/bte_mf_ensemble_eval/predictions_test.npz
+logs/
+
+# OpenBTE generated heavy artifacts
+openbte_validation/
+*.hdf5
+*.msh
+*.geo
+geometry.p
+solver.hdf5
+.cache/
+

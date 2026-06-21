@@ -1,0 +1,12 @@
+openbte==0.9.31
+numpy<2
+scipy
+shapely
+deepdish
+sparse
+numba
+mpi4py
+pyvtk
+matplotlib
+networkx
+

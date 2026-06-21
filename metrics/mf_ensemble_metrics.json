@@ -1,0 +1,55 @@
+{
+  "aleatoric_sigma2_from_train_subset": 2.9861498200817048e-05,
+  "best_single_member": {
+    "checkpoint": "results/bte_mf_ensemble/member_seed_2026062102/mf_ckpt/model.ckpt-400000.ckpt",
+    "member": "member_seed_2026062102",
+    "mse": 5.8570900145107523e-05,
+    "relative_l2": 0.026965124984262408
+  },
+  "elapsed_sec": 24.446726083755493,
+  "ensemble": {
+    "calibration_rmse": 0.03869582122334069,
+    "coverage_68": 0.6331844726897973,
+    "coverage_95": 0.8989705344577299,
+    "coverage_99": 0.9590075464589266,
+    "mean_std": 0.006016996323583647,
+    "mse": 5.3971878265828724e-05,
+    "nll": -3.461440258210822,
+    "per_sample_relative_l2_mean": 0.0258383263118979,
+    "per_sample_relative_l2_median": 0.02502012617921466,
+    "per_sample_relative_l2_p90": 0.03173020257131981,
+    "per_sample_relative_l2_p95": 0.034117258977580334,
+    "point_uncertainty_error_spearman": 0.08383966569578459,
+    "relative_l2": 0.025884826264732978,
+    "rmse": 0.007346555537517479,
+    "sample_uncertainty_error_spearman": 0.5254218454218456
+  },
+  "members": [
+    {
+      "checkpoint": "results/bte_mf_ensemble/member_seed_2026062101/mf_ckpt/model.ckpt-400000.ckpt",
+      "member": "member_seed_2026062101",
+      "mse": 5.9412548124384544e-05,
+      "relative_l2": 0.02715817471298168
+    },
+    {
+      "checkpoint": "results/bte_mf_ensemble/member_seed_2026062102/mf_ckpt/model.ckpt-400000.ckpt",
+      "member": "member_seed_2026062102",
+      "mse": 5.8570900145107523e-05,
+      "relative_l2": 0.026965124984262408
+    },
+    {
+      "checkpoint": "results/bte_mf_ensemble/member_seed_2026062103/mf_ckpt/model.ckpt-400000.ckpt",
+      "member": "member_seed_2026062103",
+      "mse": 5.912887622587619e-05,
+      "relative_l2": 0.027093262256266216
+    },
+    {
+      "checkpoint": "results/bte_mf_ensemble/member_seed_2026062104/mf_ckpt/model.ckpt-400000.ckpt",
+      "member": "member_seed_2026062104",
+      "mse": 5.941337632405896e-05,
+      "relative_l2": 0.027158364002229294
+    }
+  ],
+  "n_members": 4,
+  "train_subset_points_for_noise": 250000
+}

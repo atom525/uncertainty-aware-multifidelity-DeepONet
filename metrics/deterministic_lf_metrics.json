@@ -1,0 +1,7 @@
+{
+  "lf_best_step": 481000,
+  "lf_best_test_loss": 0.0,
+  "lf_test_mse": 4.1819286707323045e-05,
+  "lf_test_relative_l2": 0.01907426491379738,
+  "lf_elapsed_sec": 13302.995450735092
+}
