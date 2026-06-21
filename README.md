@@ -46,13 +46,24 @@ FAILED_ATTEMPTS_AND_CLEANUP_LOG.md
 
 ## Main Successful Result
 
-The strongest retained method is a strict four-member MF-DeepONet ensemble.
+There are two BTE prediction settings in the Lu et al. paper, and they must not be mixed.
+
+### Full MF pipeline: learned LF DeepONet + learned HF residual DeepONet
 
 | Method | MSE | Relative L2 |
 | --- | ---: | ---: |
-| Lu et al. paper MF-DeepONet | 8.89e-5 | 3.34% |
-| reproduced deterministic MF | 5.9957e-5 | 2.7282% |
-| **4-member ensemble** | **5.3972e-5** | **2.5885%** |
+| Lu et al. paper full MF-DeepONet | 8.89e-5 | 3.34% |
+| our deterministic model-low inference | 8.9245e-5 | 3.3285% |
+| our propagated MF-UQ | **8.6945e-5** | **3.2854%** |
+
+### Exact-low reference: exact low-fidelity values + learned HF residual DeepONet
+
+| Method | MSE | Relative L2 |
+| --- | ---: | ---: |
+| Lu et al. paper exact-low reference | 6.00e-5 | 2.72% |
+| our reproduced exact-low deterministic | 5.9957e-5 | 2.7282% |
+| our Bayesian last-layer exact-low | 5.8674e-5 | 2.6989% |
+| **our 4-member ensemble exact-low** | **5.3972e-5** | **2.5885%** |
 
 The ensemble also gives useful geometry-level uncertainty:
 

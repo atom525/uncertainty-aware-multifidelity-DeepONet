@@ -47,8 +47,10 @@ All four members completed successfully.
 | seed 2026062103 | 5.9129e-5 | 2.7093% | 397000 |
 | seed 2026062104 | 5.9413e-5 | 2.7158% | 396000 |
 
-These are all close to the reproduced deterministic MF baseline and better
-than the original paper's reported MF relative L2 of 3.34%.
+These are all close to the reproduced exact-low deterministic residual baseline
+and match the paper's exact-low reference setting, which reports about 2.72%
+relative L2. The paper's 3.34% number refers to the full learned-LF pipeline,
+not this exact-low residual setting.
 
 Note: the ensemble evaluator restores the latest checkpoint in each member
 directory (`model.ckpt-400000.ckpt`). The per-member `metrics.json` records the
@@ -72,13 +74,16 @@ Compared with earlier Bayesian prototypes:
 
 | Method | MSE | Relative L2 | Notes |
 | --- | ---: | ---: | --- |
-| Deterministic reproduced MF baseline | 5.9957e-5 | 2.7282% | single checkpoint |
+| Paper exact-low reference | 6.00e-5 | 2.72% | exact low-fidelity values + residual model |
+| Deterministic reproduced exact-low baseline | 5.9957e-5 | 2.7282% | single checkpoint |
 | Bayesian last-layer exact-low | 5.8674e-5 | 2.6989% | post-hoc linear readout |
-| Best ensemble member | 5.8571e-5 | 2.6965% | full MF model |
-| **4-member ensemble** | **5.3972e-5** | **2.5885%** | strongest point metric |
+| Best ensemble member exact-low | 5.8571e-5 | 2.6965% | one full MF residual model |
+| **4-member ensemble exact-low** | **5.3972e-5** | **2.5885%** | strongest point metric |
 
-Conclusion: the ensemble gives the strongest point prediction so far, reducing
-relative L2 from the reproduced single-checkpoint baseline 2.7282% to 2.5885%.
+Conclusion: in the exact-low reference setting, the ensemble gives the strongest
+point prediction so far, reducing relative L2 from the reproduced
+single-checkpoint baseline 2.7282% to 2.5885%. This should not be compared
+directly to the paper's 3.34% full learned-LF pipeline number.
 
 ## 4. UQ Behavior
 
@@ -165,10 +170,10 @@ Unsafe claims:
 The four-member ensemble is the strongest result so far:
 
 ```text
-Single deterministic MF rel-L2: 2.7282%
+Single deterministic exact-low rel-L2: 2.7282%
 Bayesian last-layer rel-L2:     2.6989%
 Best ensemble member rel-L2:    2.6965%
-4-member ensemble rel-L2:       2.5885%
+4-member ensemble exact-low rel-L2: 2.5885%
 ```
 
 It also improves uncertainty behavior relative to the last-layer method:

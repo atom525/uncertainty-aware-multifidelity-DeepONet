@@ -11,9 +11,11 @@ The ensemble improved the BTE field-prediction task:
 
 | Method | Relative L2 |
 | --- | ---: |
-| Lu 2022 paper MF-DeepONet | 3.34% |
-| reproduced deterministic MF | 2.728% |
-| 4-member MF ensemble | **2.588%** |
+| Lu 2022 full MF-DeepONet | 3.34% |
+| reproduced full model-low MF-UQ | 3.285% |
+| Lu 2022 exact-low reference | 2.72% |
+| reproduced exact-low deterministic | 2.728% |
+| 4-member ensemble exact-low | **2.588%** |
 
 The question was whether this improvement and the ensemble uncertainty could
 also improve the high-fidelity inverse-design objective after OpenBTE
@@ -144,7 +146,7 @@ The main lesson is:
 > Better field prediction does not automatically imply better inverse-design
 > ranking.
 
-The ensemble reduces BTE field relative L2 to 2.588%, but objective values are
+The ensemble reduces exact-low BTE field relative L2 to 2.588% and the full learned-LF pipeline reaches about 3.285%, but objective values are
 still systematically overestimated and ranking remains imperfect.
 
 ## 7. Next Step If Continuing

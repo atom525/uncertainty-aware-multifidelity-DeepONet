@@ -22,18 +22,29 @@ DeepONet:
 2. **Propagated LF+HF multifidelity UQ**
 3. **Four-member MF-DeepONet ensemble**
 
-The strongest result is the four-member ensemble:
+The results should be read under two different BTE prediction settings. The paper reports both.
+
+**Full MF pipeline**: learned LF DeepONet + learned HF residual DeepONet.
 
 | Method | Test MSE | Test relative L2 |
 | --- | ---: | ---: |
-| Lu et al. 2022 reported MF-DeepONet | 8.89e-5 | 3.34% |
-| Our reproduced deterministic MF-DeepONet | 5.9957e-5 | 2.7282% |
-| Bayesian last-layer MF-DeepONet | 5.8674e-5 | 2.6989% |
-| **Four-member MF-DeepONet ensemble** | **5.3972e-5** | **2.5885%** |
+| Lu et al. 2022 full MF-DeepONet | 8.89e-5 | 3.34% |
+| Our deterministic model-low inference | 8.9245e-5 | 3.3285% |
+| **Our propagated MF-UQ** | **8.6945e-5** | **3.2854%** |
+
+**Exact-low reference**: exact low-fidelity values + learned HF residual DeepONet.
+
+| Method | Test MSE | Test relative L2 |
+| --- | ---: | ---: |
+| Lu et al. 2022 exact-low reference | 6.00e-5 | 2.72% |
+| Our reproduced exact-low deterministic | 5.9957e-5 | 2.7282% |
+| Our Bayesian last-layer exact-low | 5.8674e-5 | 2.6989% |
+| **Our four-member ensemble exact-low** | **5.3972e-5** | **2.5885%** |
 
 Thus, on the **BTE high-fidelity field prediction task**, our UQ-enhanced
-multifidelity DeepONet variants improve over both the paper-reported number and
-our reproduced deterministic baseline.
+multifidelity variants improve their corresponding reproduced baselines. The
+strongest number, 2.5885%, belongs to the exact-low reference setting, not to
+the full learned-LF pipeline.
 
 However, on the **inverse design task**, the improvement is not yet achieved.
 We performed multiple OpenBTE high-fidelity validation rounds, including
@@ -124,14 +135,14 @@ MF residual training epochs = 400000
 LF training epochs = 500000
 ```
 
-The reproduced deterministic MF-DeepONet gives:
+For the exact-low reference setting, where the residual DeepONet is given the exact low-fidelity values `y_low_x`, our reproduced deterministic residual model gives:
 
 | Metric | Value |
 | --- | ---: |
 | Test MSE | 5.9957e-5 |
 | Test relative L2 | 2.7282% |
 
-This is already better than the paper-reported MF relative L2 of 3.34%.
+This matches the paper's exact-low reference result, which reports MSE `6.00e-5` and relative L2 `2.72%`. The full learned-LF pipeline is evaluated separately in the propagated MF-UQ section.
 
 ---
 
@@ -510,13 +521,23 @@ Only the random seed changes.
 
 ### 6.3 Ensemble results
 
+Exact-low reference setting:
+
 | Method | MSE | relative L2 |
 | --- | ---: | ---: |
-| paper MF-DeepONet | 8.89e-5 | 3.34% |
-| reproduced deterministic MF | 5.9957e-5 | 2.7282% |
-| Bayesian last-layer | 5.8674e-5 | 2.6989% |
-| best ensemble member | 5.8571e-5 | 2.6965% |
-| **4-member ensemble** | **5.3972e-5** | **2.5885%** |
+| paper exact-low reference | 6.00e-5 | 2.72% |
+| reproduced exact-low deterministic | 5.9957e-5 | 2.7282% |
+| Bayesian last-layer exact-low | 5.8674e-5 | 2.6989% |
+| best ensemble member exact-low | 5.8571e-5 | 2.6965% |
+| **4-member ensemble exact-low** | **5.3972e-5** | **2.5885%** |
+
+For the full learned-LF pipeline, the comparable result is the propagated MF-UQ setting:
+
+| Method | MSE | relative L2 |
+| --- | ---: | ---: |
+| paper full MF-DeepONet | 8.89e-5 | 3.34% |
+| our deterministic model-low inference | 8.9245e-5 | 3.3285% |
+| our propagated MF-UQ | **8.6945e-5** | **3.2854%** |
 
 UQ metrics:
 
@@ -529,12 +550,16 @@ UQ metrics:
 
 ### 6.4 Interpretation
 
-The ensemble is the strongest method for the BTE field-prediction task.
-
-It improves relative L2 from:
+The ensemble is the strongest method in the exact-low reference setting. It improves relative L2 from:
 
 ```text
 2.7282% -> 2.5885%
+```
+
+For the full learned-LF pipeline, the corresponding improvement is:
+
+```text
+3.3285% -> 3.2854%
 ```
 
 and gives much stronger geometry-level uncertainty than the last-layer
